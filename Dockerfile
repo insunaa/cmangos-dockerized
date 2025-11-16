@@ -1,4 +1,4 @@
-FROM debian:trixie as build
+FROM debian:trixie AS build
 LABEL deleteme=false
 RUN \
     mkdir /mangos && \
@@ -19,7 +19,7 @@ RUN \
     zlib1g-dev \
     ninja-build
 
-FROM build as build2
+FROM build AS build2
 ARG PLAYERBOTS=1
 ARG AHBOT=1
 ARG CMANGOS_EXPANSION="wotlk"
@@ -40,7 +40,7 @@ LABEL deleteme=false
 ENV INSIDE_CONTAINER=true
 COPY --from=build2 /mangos /mangos
 RUN apt update && \
-    apt upgrade && \
+    apt upgrade -y && \
     apt install -y \
     netcat-traditional \
     sqlite3 \
