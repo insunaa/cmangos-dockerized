@@ -7,6 +7,10 @@
 ### Getting started
 
 > [!IMPORTANT]
+> Dependencies: `bash`, `unzip`, `wget`, `sqlite3` and (`podman` + `podman-compose`) or (`docker` + `docker compose`)
+> Please ensure these are installed on your systems, or some or all of the scripts will not function correctly.
+
+> [!IMPORTANT]
 > The very first thing to do is to rename or copy the `.env.dist` file to `.env` and edit it to choose the CMaNGOS expansion you wish this server to be for.
 
 Next you should run `./build_image.sh` which will build with or without Playerbots depending on your settings in `.env`.
