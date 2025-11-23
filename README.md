@@ -18,7 +18,7 @@ This will build the server components and extractors. It also allows you to upda
 
 Next run `./update_dbs.sh` to download and install the SQLite Databases
 
-Finally run `./extract.sh /path/to/your/World of Warcraft` to extract the data required to run the server.
+Finally run `./extract.sh "/path/to/your/World of Warcraft"` to extract the data required to run the server.
 
 To make changes to the configuration use the `.env` file.
 

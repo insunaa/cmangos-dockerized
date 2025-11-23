@@ -2,7 +2,7 @@
 source preamble.sh
 
 if [ "$#" -lt 1 ]; then
-    echo 'Usage: ./extract.sh /path/to/your/wow/client'
+    echo 'Usage: ./extract.sh "/path/to/your/wow/client"'
     exit 1
 fi
 

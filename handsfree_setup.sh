@@ -14,7 +14,7 @@ if [ ! -z $INSIDE_CONTAINER ]; then
 fi
 
 if [ "$#" -lt 1 ]; then
-    echo 'Usage: ./handsfree_setup.sh /path/to/your/wow/client'
+    echo 'Usage: ./handsfree_setup.sh "/path/to/your/wow/client"'
     exit 1
 fi
 
