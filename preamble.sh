@@ -31,11 +31,12 @@ export ORCH=podman
 
 if [ ! -z "${CONTAINER_ORCHESTRATOR}" ]; then
     ORCH="${CONTAINER_ORCHESTRATOR}"
-elif [ -z "$INSIDE_CONTAINER" ]; then
     if [ ! "$(checkpodman)" ]; then
         if [ ! "$(checkdocker)" ]; then
-            echo "No Container-Orchestrator found."
-            exit 1
+            if [ -z "$INSIDE_CONTAINER" ]; then # Only an error case if ran outside of the container.
+                echo "No Container-Orchestrator found."
+                exit 1
+            fi
         else
             ORCH=docker
         fi
