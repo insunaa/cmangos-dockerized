@@ -14,7 +14,7 @@
 > Soft dependencies `unzip`, `wget`, `sqlite3`
 >
 > If you do not want to install the soft dependencies on your host system, the `handsfree_setup.sh` script will not work for you.
-> Without the soft dependencies installed, every installation step ***after*** `./build_image.sh` needs to be run from within the shell provided by `./sqlite_shell.sh`.
+> Without the soft dependencies installed, every installation step ***after*** `./build_image.sh` (*except* `./enter_console.sh`) needs to be run from within the shell provided by `./sqlite_shell.sh`.
 >
 > Please ensure these are installed on your systems, or some or all of the scripts will not function correctly.
 
