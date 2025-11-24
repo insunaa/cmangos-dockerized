@@ -35,6 +35,7 @@ export ORCH=podman
 
 if [ ! -z "${CONTAINER_ORCHESTRATOR}" ]; then
     ORCH="${CONTAINER_ORCHESTRATOR}"
+else
     if [ ! "$(checkpodman)" ]; then
         if [ ! "$(checkdocker)" ]; then
             if [ -z "$INSIDE_CONTAINER" ]; then # Only an error case if ran outside of the container.
