@@ -11,6 +11,7 @@
 
 > [!IMPORTANT]
 > Hard dependencies: (`podman` + `podman-compose` / `docker compose`) or (`docker` + `docker compose`)
+>
 > Soft dependencies `unzip`, `wget`, `sqlite3`
 >
 > If you do not want to install the soft dependencies on your host system, the `handsfree_setup.sh` script will not work for you.
