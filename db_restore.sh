@@ -12,7 +12,7 @@ if ! expr "$REPLY" 1>/dev/null : '^[Yy]$'; then
     exit 1
 fi
 
-if [ ! -f realmd_backup.sql ] || [ ! -s realmd_backup.sql ]; then
+if [ ! -s realmd_backup.sql ]; then
     "No Realmd Backup detected. Aborting"
     exit 1
 fi
@@ -24,7 +24,7 @@ done
 echo "Restoring the realmd Database"
 sqlite3 -batch databases/realmd.sqlite < realmd_backup.sql
 
-if [ ! -f characters_backup.sql ] || [ ! -s characters_backup.sql ]; then
+if [ ! -s characters_backup.sql ]; then
     "No Characters Backup detected. Aborting"
     exit 1
 fi

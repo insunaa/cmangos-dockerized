@@ -9,3 +9,4 @@ realm.sql
 custom.sql
 databases_old
 .env
+data*

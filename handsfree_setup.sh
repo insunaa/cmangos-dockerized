@@ -1,6 +1,6 @@
 #!/bin/sh
 # shellcheck disable=SC3045
-if [ ! -f .env ]; then
+if [ ! -s .env ]; then
     echo "Please modify the '.env' file to select the desired expansion!"
     cp .env.dist .env
     exit 1
