@@ -10,7 +10,7 @@
 ### Getting started
 
 > [!IMPORTANT]
-> Dependencies: `bash`, `unzip`, `wget`, `sqlite3` and (`podman` + `podman-compose` / `docker compose`) or (`docker` + `docker compose`)
+> Dependencies: `unzip`, `wget`, `sqlite3` and (`podman` + `podman-compose` / `docker compose`) or (`docker` + `docker compose`)
 >
 > Please ensure these are installed on your systems, or some or all of the scripts will not function correctly.
 

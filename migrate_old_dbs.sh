@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/bin/sh
+
+. ./preamble.sh
 
 if [ ! "$(checksqlite)" ]; then
     echo 'sqlite3 not found. Cannot run DB migration natively. Use "./sqlite_shell.sh" to run from within the container.'
@@ -23,5 +25,5 @@ done >> characters_backup.sql
 echo "COMMIT TRANSACTION;" >> characters_backup.sql
 
 rm -rf databases
-bash update_dbs.sh
-bash db_restore.sh
+sh update_dbs.sh
+sh db_restore.sh

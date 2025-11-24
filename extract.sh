@@ -1,12 +1,12 @@
-#!/bin/bash
-source preamble.sh
+#!/bin/sh
+. ./preamble.sh
 
 if [ "$#" -lt 1 ]; then
     echo 'Usage: ./extract.sh "/path/to/your/wow/client"'
     exit 1
 fi
 
-if [[ ! -d "$1" ]]; then
+if [ ! -d "$1" ]; then
     echo 'Target must be the "World of Warcraft" directory.'
     exit 1
 fi
@@ -16,7 +16,7 @@ if [ "$1" = "/" ] || [ "$1" = "" ]; then
     exit 1
 fi
 
-if [[ ! -d "$1/Data" ]] && [[ ! -d "$1/data" ]]; then
+if [ ! -d "$1/Data" ] && [ ! -d "$1/data" ]; then
     echo 'Target must be the "World of Warcraft" directory.'
     exit 1
 fi

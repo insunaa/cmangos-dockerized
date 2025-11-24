@@ -1,5 +1,5 @@
-#!/bin/bash
-source preamble.sh
+#!/bin/sh
+. ./preamble.sh
 
 $ORCH build --build-arg AHBOT=$BUILD_PLAYERBOTS --build-arg PLAYERBOTS=$BUILD_PLAYERBOTS --build-arg CMANGOS_EXPANSION=$CMANGOS_EXPANSION -t cmangos-$CMANGOS_EXPANSION:latest -t cmangos-$CMANGOS_EXPANSION:"$(date -I)" .
 

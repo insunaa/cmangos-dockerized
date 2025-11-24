@@ -1,13 +1,14 @@
-#!/bin/bash
+#!/bin/sh
+# shellcheck disable=SC3045
 if [ -z "$INSIDE_CONTAINER" ]; then
     echo 'Updating the core.'
     sleep 3s
-    bash build_image.sh
+    sh build_image.sh
 fi
 
 read -p "Also update the Databases? [y/N] " -n 1 -r
 echo
-if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+if ! expr "$REPLY" 1>/dev/null : '^[Yy]$'; then
     exit 1
 fi
 
@@ -23,7 +24,7 @@ fi
 
 echo 'Updating all Databases. If errors occur, delete the "databases" directory and rename "databases_old" to "databases"'
 sleep 3s
-bash db_backup.sh
+sh db_backup.sh
 mv databases databases_old
-bash update_dbs.sh
-bash db_restore.sh
+sh update_dbs.sh
+sh db_restore.sh

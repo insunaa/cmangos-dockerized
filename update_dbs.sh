@@ -1,12 +1,12 @@
-#!/bin/bash
-source preamble.sh
+#!/bin/sh
+. ./preamble.sh
 
 if [ ! "$(checkwget)" ] || [ ! "$(checkunzip)" ]; then
     echo 'wget or unzip dependencies not found. Please make sure they are installed.'
     exit 1
 fi
 
-wget --quiet -O dbs.zip https://github.com/cmangos/$CMANGOS_EXPANSION-db/releases/download/latest/$CMANGOS_EXPANSION-sqlite-db.zip
+wget --quiet -O dbs.zip "https://github.com/cmangos/$CMANGOS_EXPANSION-db/releases/download/latest/$CMANGOS_EXPANSION-sqlite-db.zip"
 
 if [ ! -f dbs.zip ]; then
     echo "Failed to download Databases"

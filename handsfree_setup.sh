@@ -1,12 +1,12 @@
-#!/bin/bash
-
+#!/bin/sh
+# shellcheck disable=SC3045
 if [ ! -f .env ]; then
     echo "Please modify the '.env' file to select the desired expansion!"
     cp .env.dist .env
     exit 1
 fi
 
-source preamble.sh
+. ./preamble.sh
 
 if [ ! -z "$INSIDE_CONTAINER" ]; then
     echo 'Setup cannot be done from inside the container. Please build it regularly.'
@@ -18,7 +18,7 @@ if [ "$#" -lt 1 ]; then
     exit 1
 fi
 
-if [[ ! -d "$1" ]]; then
+if [ ! -d "$1" ]; then
     echo 'Target must be the "World of Warcraft" directory.'
     exit 1
 fi
@@ -28,7 +28,7 @@ if [ "$1" = "/" ] || [ "$1" = "" ]; then
     exit 1
 fi
 
-if [[ ! -d "$1/Data" ]] && [[ ! -d "$1/data" ]]; then
+if [ ! -d "$1/Data" ] && [ ! -d "$1/data" ]; then
     echo 'Target must be the "World of Warcraft" directory.'
     exit 1
 fi
@@ -37,7 +37,8 @@ if [ "$ORCH" = "docker" ]; then
     if ! $ORCH ps -q >/dev/null 2>&1; then
         read -p "Docker daemon is not running. Try anyway? [y/N] " -n 1 -r
         echo
-        if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+        # if [ ! "$REPLY" =~ ^[Yy]$ ]; then
+        if ! expr "$REPLY" 1>/dev/null : '^[Yy]$'; then
             exit 1
         fi
     fi
@@ -47,11 +48,11 @@ if [ ! -d data ]; then
     mkdir data
 fi
 
-bash build_image.sh
-if ! bash update_dbs.sh; then
+sh build_image.sh
+if ! sh update_dbs.sh; then
     exit 1
 fi
-if ! bash extract.sh "$1"; then
+if ! sh extract.sh "$1"; then
     exit 1
 fi
 

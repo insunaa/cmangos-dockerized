@@ -1,5 +1,5 @@
-#!/bin/bash
-source preamble.sh
+#!/bin/sh
+. ./preamble.sh
 
 if [ ! -z "$INSIDE_CONTAINER" ]; then
     echo "Already inside container"

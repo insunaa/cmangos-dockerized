@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/bin/sh
+. ./preamble.sh
 
 if [ ! "$(checksqlite)" ]; then
     echo 'sqlite3 not found. Cannot run DB Backup natively. Use "./sqlite_shell.sh" to run from within the container.'

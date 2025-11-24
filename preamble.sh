@@ -17,14 +17,6 @@ checkwget(){
 checkunzip(){
     command -v unzip
 }
-checkbash(){
-    command -v bash
-}
-
-if [ ! "$(checkbash)" ]; then
-    echo 'bash not found. Bash is a mandatory dependency, please install it and run the script again.'
-    exit 1
-fi
 
 if [ ! -f .env ]; then
     if [ ! -f .env.dist ]; then
@@ -37,7 +29,7 @@ fi
 if [ "$(checkgit)" ]; then
     git restore .env.dist
 fi
-. .env
+. ./.env
 
 export ORCH=podman
 
