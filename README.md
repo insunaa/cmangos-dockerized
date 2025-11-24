@@ -10,7 +10,11 @@
 ### Getting started
 
 > [!IMPORTANT]
-> Dependencies: `unzip`, `wget`, `sqlite3` and (`podman` + `podman-compose` / `docker compose`) or (`docker` + `docker compose`)
+> Hard dependencies: (`podman` + `podman-compose` / `docker compose`) or (`docker` + `docker compose`)
+> Soft dependencies `unzip`, `wget`, `sqlite3`
+>
+> If you do not want to install the soft dependencies on your host system, the `handsfree_setup.sh` script will not work for you.
+> Without the soft dependencies installed, every installation step ***after*** `./build_image.sh` needs to be run from within the shell provided by `./sqlite_shell.sh`.
 >
 > Please ensure these are installed on your systems, or some or all of the scripts will not function correctly.
 
