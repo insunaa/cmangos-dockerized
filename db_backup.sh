@@ -3,6 +3,7 @@
 
 if [ ! "$(checksqlite)" ]; then
     echo 'sqlite3 not found. Cannot run DB Backup natively. Use "./sqlite_shell.sh" to run from within the container.'
+    exit 1
 fi
 
 if [ ! -d databases ] || [ ! -s databases/realmd.sqlite ] || [ ! -s databases/characters.sqlite ]; then

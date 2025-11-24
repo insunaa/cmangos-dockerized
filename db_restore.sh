@@ -4,6 +4,7 @@
 
 if [ ! "$(checksqlite)" ]; then
     echo 'sqlite3 not found. Cannot run DB Restore natively. Use "./sqlite_shell.sh" to run from within the container.'
+    exit 1
 fi
 
 read -p "Are you sure? This will delete your current database if you do not have the most recent version backed up. [y/N] " -n 1 -r
