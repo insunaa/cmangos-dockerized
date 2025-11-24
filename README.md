@@ -3,11 +3,12 @@
 > [!NOTE]
 > By default `podman` is used. If `podman` is not present on your system, `docker` will be used.
 > If you want to override which container orchestrator to use set the environment variable `CONTAINER_ORCHESTRATOR` to `podman` or `docker` or any other that is command-compatible.
+> If you want to override which container composer to use, set the environment variable `CONTAINER_COMPOSER` for example to `docker compose`, `docker-compose`, etc.
 
 ### Getting started
 
 > [!IMPORTANT]
-> Dependencies: `bash`, `unzip`, `wget`, `sqlite3` and (`podman` + `podman-compose`) or (`docker` + `docker compose`)
+> Dependencies: `bash`, `unzip`, `wget`, `sqlite3` and (`podman` + `podman-compose` / `docker compose`) or (`docker` + `docker compose`)
 > Please ensure these are installed on your systems, or some or all of the scripts will not function correctly.
 
 > [!IMPORTANT]
@@ -22,7 +23,7 @@ Finally run `./extract.sh "/path/to/your/World of Warcraft"` to extract the data
 
 To make changes to the configuration use the `.env` file.
 
-Once all of this has finished you can start the server with `podman-compose up -d` and check the status with `podman-compose logs`
+Once all of this has finished you can start the server with `podman compose up -d` and check the status with `podman compose logs`
 
 To create a user run `./enter_console.sh` to connect to the `mangosd` process. Log in with `ADMINISTRATOR` as user and `ADMINISTRATOR` as password.
 
@@ -40,7 +41,7 @@ To make your account into a GM account, use `account set gmlevel 3 username`.
 To update the core simply run `./build_image.sh` again.
 To update the database simply run `./update_dbs.sh` again
 
-After updating the core, the composition needs to be fully torn down with `podman-compose down` or `docker compose down` and not simply stopped for it to load the newly built core image.
+After updating the core, the composition needs to be fully torn down with `podman compose down` or `docker compose down` and not simply stopped for it to load the newly built core image.
 
 ### Special files
 

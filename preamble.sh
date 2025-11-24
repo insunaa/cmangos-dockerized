@@ -32,11 +32,15 @@ else
     fi
 fi
 
-COMPOSE_COMMAND="podman-compose"
+COMPOSE_COMMAND="podman compose"
 
-if [ "$ORCH" = "docker" ]; then
-    COMPOSE_COMMAND="docker compose"
-fi
-if [ ! -z "${CONTAINER_ORCHESTRATOR}" ]; then
-    COMPOSE_COMMAND="$CONTAINER_ORCHESTRATOR-compose"
+if [ ! -z "${CONTAINER_COMPOSER}" ]; then
+    COMPOSE_COMMAND="$CONTAINER_COMPOSER"
+else
+    if [ "$ORCH" = "docker" ]; then
+        COMPOSE_COMMAND="docker compose"
+    fi
+    if [ ! -z "${CONTAINER_ORCHESTRATOR}" ]; then
+        COMPOSE_COMMAND="$CONTAINER_ORCHESTRATOR-compose"
+    fi
 fi
