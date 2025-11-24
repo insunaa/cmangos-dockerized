@@ -5,13 +5,17 @@ checkpodman(){
 checkdocker(){
     command -v docker
 }
-
 checkgit(){
     command -v git
 }
-
 checksqlite(){
     command -v sqlite3
+}
+checkwget(){
+    command -v wget
+}
+checkunzip(){
+    command -v unzip
 }
 
 if [ ! -f .env ]; then
