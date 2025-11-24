@@ -15,9 +15,7 @@
 > Soft dependencies `unzip`, `wget`, `sqlite3`
 >
 > If you do not want to install the soft dependencies on your host system, the `handsfree_setup.sh` script will not work for you.
-> Without the soft dependencies installed, every installation step ***after*** `./build_image.sh` (*except* `./enter_console.sh`) needs to be run from within the shell provided by `./sqlite_shell.sh`.
->
-> Please ensure these are installed on your systems, or some or all of the scripts will not function correctly.
+> Without the soft dependencies installed, `./update_dbs.sh` needs to be run from within the shell provided by `./sqlite_shell.sh`.
 
 > [!IMPORTANT]
 > The very first thing to do is to rename or copy the `.env.dist` file to `.env` and edit it to choose the CMaNGOS expansion you wish this server to be for.
