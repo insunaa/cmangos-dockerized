@@ -1,9 +1,17 @@
 #!/bin/bash
 checkpodman(){
-    echo $(command -v podman)
+    command -v podman
 }
 checkdocker(){
-    echo $(command -v docker)
+    command -v docker
+}
+
+checkgit(){
+    command -v git
+}
+
+checksqlite(){
+    command -v sqlite3
 }
 
 if [ ! -f .env ]; then
@@ -14,16 +22,18 @@ if [ ! -f .env ]; then
         cp .env.dist .env
     fi
 fi
-git restore .env.dist
+if [ "$(checkgit)" ]; then
+    git restore .env.dist
+fi
 source .env
 
-ORCH=podman
+export ORCH=podman
 
 if [ ! -z "${CONTAINER_ORCHESTRATOR}" ]; then
     ORCH="${CONTAINER_ORCHESTRATOR}"
-else
-    if [ ! $(checkpodman) ]; then
-        if [ ! $(checkdocker) ]; then
+elif [ -z "$INSIDE_CONTAINER" ]; then
+    if [ ! "$(checkpodman)" ]; then
+        if [ ! "$(checkdocker)" ]; then
             echo "No Container-Orchestrator found."
             exit 1
         else
@@ -32,7 +42,7 @@ else
     fi
 fi
 
-COMPOSE_COMMAND="podman compose"
+export COMPOSE_COMMAND="podman compose"
 
 if [ ! -z "${CONTAINER_COMPOSER}" ]; then
     COMPOSE_COMMAND="$CONTAINER_COMPOSER"

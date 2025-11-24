@@ -1,5 +1,5 @@
 #!/bin/bash
-if [ -z $INSIDE_CONTAINER ]; then
+if [ -z "$INSIDE_CONTAINER" ]; then
     echo 'Updating the core.'
     sleep 3s
     bash build_image.sh
@@ -17,11 +17,11 @@ if [ ! -d databases ]; then
 fi
 
 if [ -d databases_old ]; then
-    echo '`databases_old` directory found. Please rename or delete it.'
+    echo '"databases_old" directory found. Please rename or delete it.'
     exit 1
 fi
 
-echo 'Updating all Databases. If errors occur, delete the `databases` directory and rename `databases_old` to `databases`'
+echo 'Updating all Databases. If errors occur, delete the "databases" directory and rename "databases_old" to "databases"'
 sleep 3s
 bash db_backup.sh
 mv databases databases_old

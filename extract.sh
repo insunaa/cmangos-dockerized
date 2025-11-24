@@ -7,7 +7,7 @@ if [ "$#" -lt 1 ]; then
 fi
 
 if [[ ! -d "$1" ]]; then
-    echo 'Target must be the `World of Warcraft` directory.'
+    echo 'Target must be the "World of Warcraft" directory.'
     exit 1
 fi
 
@@ -17,7 +17,7 @@ if [ "$1" = "/" ] || [ "$1" = "" ]; then
 fi
 
 if [[ ! -d "$1/Data" ]] && [[ ! -d "$1/data" ]]; then
-    echo 'Target must be the `World of Warcraft` directory.'
+    echo 'Target must be the "World of Warcraft" directory.'
     exit 1
 fi
 

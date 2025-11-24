@@ -17,9 +17,12 @@ if [ ! -f databases/mangos.sqlite ]; then
     mv -f databases/"$CMANGOS_EXPANSION"realmd.sqlite databases/realmd.sqlite
     mv -f databases/"$CMANGOS_EXPANSION"characters.sqlite databases/characters.sqlite
     mv -f databases/"$CMANGOS_EXPANSION"logs.sqlite databases/logs.sqlite
-
-    if [ -f databases/realmd.sqlite ]; then
-        sqlite3 -batch databases/realmd.sqlite "UPDATE account SET locked=1 WHERE id<5;" ".exit"
+    if [ "$(checksqlite)" ]; then
+        if [ -f databases/realmd.sqlite ]; then
+            sqlite3 -batch databases/realmd.sqlite "UPDATE account SET locked=1 WHERE id<5;" ".exit"
+        fi
+    else
+        echo 'sqlite3 not found. Cannot lock default accounts.'
     fi
 else
     unzip -o dbs.zip "$CMANGOS_EXPANSION"mangos.sqlite -d databases
@@ -28,10 +31,18 @@ fi
 
 rm dbs.zip
 
-if [ -f custom.sql ]; then
-    sqlite3 -batch databases/mangos.sqlite < custom.sql
+if [ "$(checksqlite)" ]; then
+    if [ -f custom.sql ]; then
+        sqlite3 -batch databases/mangos.sqlite < custom.sql
+    fi
+else
+    echo 'sqlite3 not found. Not applying custom DB changes.'
 fi
 
-if [ -f realm.sql ]; then
-    sqlite3 -batch databases/realmd.sqlite < realm.sql
+if [ "$(checksqlite)" ]; then
+    if [ -f realm.sql ]; then
+        sqlite3 -batch databases/realmd.sqlite < realm.sql
+    fi
+else
+    echo 'sqlite3 not found. Not applying realm.sql changes to DB.'
 fi

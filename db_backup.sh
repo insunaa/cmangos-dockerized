@@ -1,4 +1,9 @@
 #!/bin/bash
+
+if [ ! "$(checksqlite)" ]; then
+    echo 'sqlite3 not found. Cannot run DB Backup natively. Use "./sqlite_shell.sh" to run from within the container.'
+fi
+
 echo "Backing up realmd Database"
 truncate -s 0 realmd_backup.sql
 echo "BEGIN TRANSACTION;" > realmd_backup.sql

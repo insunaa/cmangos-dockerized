@@ -8,7 +8,7 @@ fi
 
 source preamble.sh
 
-if [ ! -z $INSIDE_CONTAINER ]; then
+if [ ! -z "$INSIDE_CONTAINER" ]; then
     echo 'Setup cannot be done from inside the container. Please build it regularly.'
     exit 1
 fi
@@ -19,7 +19,7 @@ if [ "$#" -lt 1 ]; then
 fi
 
 if [[ ! -d "$1" ]]; then
-    echo 'Target must be the `World of Warcraft` directory.'
+    echo 'Target must be the "World of Warcraft" directory.'
     exit 1
 fi
 
@@ -29,7 +29,7 @@ if [ "$1" = "/" ] || [ "$1" = "" ]; then
 fi
 
 if [[ ! -d "$1/Data" ]] && [[ ! -d "$1/data" ]]; then
-    echo 'Target must be the `World of Warcraft` directory.'
+    echo 'Target must be the "World of Warcraft" directory.'
     exit 1
 fi
 
@@ -55,5 +55,5 @@ if ! bash extract.sh $1; then
     exit 1
 fi
 
-echo 'Setup finished! Edit `etc/playerbot.conf` to optionally disable playerbots.'
-echo 'To create your account use `podman-compose up -d` or `docker compose up -d` to start the composition, then run `enter_console.sh` to log into the terminal.'
+echo 'Setup finished! Edit "etc/playerbot.conf" to optionally disable playerbots.'
+echo 'To create your account use "podman-compose up -d" or "docker compose up -d" to start the composition, then run "enter_console.sh" to log into the terminal.'
