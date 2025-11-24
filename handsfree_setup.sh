@@ -51,7 +51,7 @@ bash build_image.sh
 if ! bash update_dbs.sh; then
     exit 1
 fi
-if ! bash extract.sh $1; then
+if ! bash extract.sh "$1"; then
     exit 1
 fi
 
