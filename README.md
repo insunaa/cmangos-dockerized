@@ -2,13 +2,16 @@
 
 > [!NOTE]
 > By default `podman` is used. If `podman` is not present on your system, `docker` will be used.
+>
 > If you want to override which container orchestrator to use set the environment variable `CONTAINER_ORCHESTRATOR` to `podman` or `docker` or any other that is command-compatible.
+>
 > If you want to override which container composer to use, set the environment variable `CONTAINER_COMPOSER` for example to `docker compose`, `docker-compose`, etc.
 
 ### Getting started
 
 > [!IMPORTANT]
 > Dependencies: `bash`, `unzip`, `wget`, `sqlite3` and (`podman` + `podman-compose` / `docker compose`) or (`docker` + `docker compose`)
+>
 > Please ensure these are installed on your systems, or some or all of the scripts will not function correctly.
 
 > [!IMPORTANT]
@@ -29,6 +32,7 @@ To create a user run `./enter_console.sh` to connect to the `mangosd` process. L
 
 > [!NOTE]
 > There are 4 default users in the Database: `ADMINISTRATOR`, `GAMEMASTER`, `MODERATOR` and `PLAYER`, each of which have their account name as their password.
+>
 > All 4 of these accounts are disabled for logging in from the client, but can be used to log in with the `./enter_console.sh` command.
 
 The command to run is: `account create username password 3` replace `username` with your username and `password` with your password.
@@ -67,4 +71,5 @@ If they are not empty in the next step *rename* your `databases` directory to `d
 
 > [!TIP]
 > There are also the `handsfree_setup.sh` and the `handsfree_update.sh` scripts, which *should* do the full setup without user intervention and do a full update with only a minor intervention.
+>
 > Especially the hands free update is dangerous, so only do it if you're sure.
