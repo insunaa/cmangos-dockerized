@@ -11,3 +11,4 @@ databases_old
 .env
 data*
 db_archive
+old_backups

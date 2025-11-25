@@ -11,6 +11,17 @@ if [ ! -d databases ] || [ ! -s databases/realmd.sqlite ] || [ ! -s databases/ch
     exit 1
 fi
 
+if [ ! -d old_backups ]; then
+    mkdir old_backups
+fi
+
+if [ -s realmd_backup.sql ]; then
+    mv realmd_backup.sql "old_backups/$(date +'%Y-%m-%d %H:%M')-realmd_backup.sql"
+fi
+if [ -s characters_backup.sql ]; then
+    mv characters_backup.sql "old_backups/$(date +'%Y-%m-%d %H:%M')-characters_backup.sql"
+fi
+
 echo "Backing up realmd Database"
 truncate -s 0 realmd_backup.sql
 echo "BEGIN TRANSACTION;" > realmd_backup.sql
