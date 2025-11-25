@@ -35,7 +35,11 @@ else
     mv -f databases/"$CMANGOS_EXPANSION"mangos.sqlite databases/mangos.sqlite
 fi
 
-rm dbs.zip
+if [ ! -d db_archive ]; then
+    mkdir db_archive
+fi
+
+mv dbs.zip db_archive/"$CMANGOS_EXPANSION"-db-"$(date -I)".zip
 
 if [ "$(checksqlite)" ]; then
     if [ -s custom.sql ]; then
