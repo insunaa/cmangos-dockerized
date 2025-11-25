@@ -35,7 +35,7 @@ else
     mv -f databases/"$CMANGOS_EXPANSION"mangos.sqlite databases/mangos.sqlite
 fi
 
-if [ "$ARCHIVE_DBS" ]; then
+if [ "$ARCHIVE_DBS" = 1 ]; then
     if [ ! -d db_archive ]; then
         mkdir db_archive
     fi
