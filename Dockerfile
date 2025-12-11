@@ -28,11 +28,11 @@ RUN git clone --single-branch --branch=master --depth=1 --recursive https://gith
     mkdir -p mangos-${CMANGOS_EXPANSION}/build && \
     cmake -Bmangos-${CMANGOS_EXPANSION}/build -Smangos-${CMANGOS_EXPANSION} -DPCH=1 -DDEBUG=0 -DUSE_ANTICHEAT=0 -DSQLITE=1 -DBUILD_EXTRACTORS=1 -DBUILD_AHBOT=${AHBOT} -DBUILD_PLAYERBOTS=${PLAYERBOTS} -DCMAKE_INSTALL_PREFIX=/mangos -DCMAKE_BUILD_TYPE=Release -GNinja -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_CXX_STANDARD=20 && \
     cd mangos-${CMANGOS_EXPANSION}/build && \
-    ninja install && \
-    mv -f /mangos/etc/mangosd.conf.dist /mangos/etc/mangosd.conf && \
-    mv -f /mangos/etc/realmd.conf.dist /mangos/etc/realmd.conf && \
-    mv -f /mangos/etc/ahbot.conf.dist /mangos/etc/ahbot.conf && \
-    mv -f /mangos/etc/aiplayerbot.conf.dist /mangos/etc/aiplayerbot.conf && \
+    ninja install ; \
+    mv -f /mangos/etc/mangosd.conf.dist /mangos/etc/mangosd.conf ; \
+    mv -f /mangos/etc/realmd.conf.dist /mangos/etc/realmd.conf ; \
+    mv -f /mangos/etc/ahbot.conf.dist /mangos/etc/ahbot.conf ; \
+    mv -f /mangos/etc/aiplayerbot.conf.dist /mangos/etc/aiplayerbot.conf ; \
     mv -f /mangos/etc/anticheat.conf.dist /mangos/etc/anticheat.conf
 
 FROM debian:trixie-slim
