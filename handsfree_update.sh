@@ -6,7 +6,7 @@ if [ -z "$INSIDE_CONTAINER" ]; then
     sh build_image.sh
 fi
 
-read -p "Also update the Databases? [y/N] " -n 1 -r
+read -p "Also update the Databases? [y/N] " -r
 echo
 if ! expr "$REPLY" 1>/dev/null : '^[Yy]$'; then
     exit 1

@@ -7,7 +7,7 @@ if [ ! "$(checksqlite)" ]; then
     exit 1
 fi
 
-read -p "Are you sure? This will delete your current database if you do not have the most recent version backed up. [y/N] " -n 1 -r
+read -p "Are you sure? This will delete your current database if you do not have the most recent version backed up. [y/N] " -r
 echo
 if ! expr "$REPLY" 1>/dev/null : '^[Yy]$'; then
     exit 1

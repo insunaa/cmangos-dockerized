@@ -35,7 +35,7 @@ fi
 
 if [ "$ORCH" = "docker" ]; then
     if ! $ORCH ps -q >/dev/null 2>&1; then
-        read -p "Docker daemon is not running. Try anyway? [y/N] " -n 1 -r
+        read -p "Docker daemon is not running. Try anyway? [y/N] " -r
         echo
         if ! expr "$REPLY" 1>/dev/null : '^[Yy]$'; then
             exit 1
