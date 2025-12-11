@@ -18,6 +18,14 @@ checkunzip(){
     command -v unzip
 }
 
+are_you_sure() {
+    IFS= read -r reply
+    case "$reply" in
+        [yY]|[yY][eE][sS]) return 0 ;;
+        *) exit 1 ;;
+    esac
+}
+
 if [ ! -s .env ]; then
     if [ ! -s .env.dist ]; then
         echo "No .env or .env.dist file found. Please ensure you run this script from the correct directory!"

@@ -7,11 +7,8 @@ if [ ! "$(checksqlite)" ]; then
     exit 1
 fi
 
-read -p "Are you sure? This will delete your current database if you do not have the most recent version backed up. [y/N] " -r
-echo
-if ! expr "$REPLY" 1>/dev/null : '^[Yy]$'; then
-    exit 1
-fi
+echo "Are you sure? This will delete your current database if you do not have the most recent version backed up. [y/N] "
+are_you_sure
 
 if [ ! -s realmd_backup.sql ]; then
     "No Realmd Backup detected. Aborting"

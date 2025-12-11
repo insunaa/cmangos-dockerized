@@ -6,11 +6,10 @@ if [ -z "$INSIDE_CONTAINER" ]; then
     sh build_image.sh
 fi
 
-read -p "Also update the Databases? [y/N] " -r
-echo
-if ! expr "$REPLY" 1>/dev/null : '^[Yy]$'; then
-    exit 1
-fi
+. ./preamble.sh
+
+echo "Also update the Databases? [y/N] "
+are_you_sure
 
 if [ ! -d databases ]; then
     echo 'No databases to update found'
