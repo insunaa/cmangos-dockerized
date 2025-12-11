@@ -50,6 +50,19 @@ To update the database simply run `./update_dbs.sh` again
 
 After updating the core, the composition needs to be fully torn down with `podman compose down` or `docker compose down` and not simply stopped for it to load the newly built core image.
 
+### Migrating from existing MySQL Database
+
+To migrate account and character data from an existing MySQL database, you need to create backups of these databases with the following commands:
+```
+mysqldump -umangos -pmangos --no-create-info --compact --complete-insert --single-transaction --quick --compatible=ansi wotlkrealmd > realmd_backup.sql
+mysqldump -umangos -pmangos --no-create-info --compact --complete-insert --single-transaction --quick --compatible=ansi wotlkcharacters > characters_backup.sql
+```
+
+Replace `-umangos` with `-uyourdbuser` and `-pmangos` with `-pyourdbpassword` and replace the db names `wotlkrealmd` and `wotlkcharacters` with the names of the realmd db and characters db of your cmangos installation.
+
+You can then copy the two resulting `.sql` files to this dockerized repo directory and then, after `./update_dbs.sh` has been run, use `./db_restore.sh` to restore your backup into the SQLite database.
+
+
 ### Special files
 
 To override settings from the `compose.yml` you can create a `compose.override.yml` and use it to add or override values from the `compose.yml`.
