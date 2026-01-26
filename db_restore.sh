@@ -11,7 +11,7 @@ echo "Are you sure? This will delete your current database if you do not have th
 are_you_sure
 
 if [ ! -s realmd_backup.sql ]; then
-    "No Realmd Backup detected. Aborting"
+    echo "No Realmd Backup detected. Aborting"
     exit 1
 fi
 
@@ -23,7 +23,7 @@ echo "Restoring the realmd Database"
 sqlite3 -batch databases/realmd.sqlite < realmd_backup.sql
 
 if [ ! -s characters_backup.sql ]; then
-    "No Characters Backup detected. Aborting"
+    echo "No Characters Backup detected. Aborting"
     exit 1
 fi
 
