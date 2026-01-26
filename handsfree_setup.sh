@@ -54,5 +54,4 @@ if ! sh extract.sh "$1"; then
     exit 1
 fi
 
-echo 'Setup finished! Edit "etc/playerbot.conf" to optionally disable playerbots.'
 echo 'To create your account use "podman compose up -d" or "docker compose up -d" to start the composition, then run "enter_console.sh" to log into the terminal.'
