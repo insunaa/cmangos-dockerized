@@ -23,6 +23,7 @@
 After you've copied and edited your `.env` file you should run `./build_image.sh` or `podman compose build`/`docker compose build` which will build with or without Playerbots depending on your settings in `.env`.
 > [!NOTE]
 > Only `./build_image.sh` will create a container with the current date tagged, which allows easily reverting to an older container image, if the current image has a game-breaking bug. The other methods of building will only tag `latest`.
+
 This will build the server components and extractors. It also allows you to update the CMaNGOS core to the latest version.
 
 Next run `./update_dbs.sh` to download and install the SQLite Databases
