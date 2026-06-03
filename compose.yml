@@ -1,16 +1,16 @@
 services:
   realmd:
-    image: cmangos-${CMANGOS_EXPANSION}:latest
+    image: cmangos-${CMANGOS_EXPANSION:-wotlk}:latest
     pull_policy: never
     build:
       context: "docker"
       tags:
-        - "cmangos-${CMANGOS_EXPANSION}:latest"
+        - "cmangos-${CMANGOS_EXPANSION:-wotlk}:latest"
       dockerfile: Dockerfile
       args:
-        - "PLAYERBOTS=${BUILD_PLAYERBOTS}"
-        - "AHBOT=${BUILD_PLAYERBOTS}"
-        - "CMANGOS_EXPANSION=${CMANGOS_EXPANSION}"
+        - "PLAYERBOTS=${BUILD_PLAYERBOTS:-1}"
+        - "AHBOT=${BUILD_PLAYERBOTS:-1}"
+        - "CMANGOS_EXPANSION=${CMANGOS_EXPANSION:-wotlk}"
     env_file: .env
     ports:
       - 3724:3724
@@ -20,7 +20,7 @@ services:
     entrypoint:
       - "/mangos/bin/realmd"
   mangosd:
-    image: cmangos-${CMANGOS_EXPANSION}:latest
+    image: cmangos-${CMANGOS_EXPANSION:-wotlk}:latest
     pull_policy: never
     env_file: .env
     ports:
