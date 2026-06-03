@@ -20,7 +20,9 @@
 > [!IMPORTANT]
 > The very first thing to do is to rename or copy the `.env.dist` file to `.env` and edit it to choose the CMaNGOS expansion you wish this server to be for.
 
-Next you should run `./build_image.sh` which will build with or without Playerbots depending on your settings in `.env`.
+After you've copied and edited your `.env` file you should run `./build_image.sh` or `podman compose build`/`docker compose build` which will build with or without Playerbots depending on your settings in `.env`.
+> [!NOTE]
+> Only `./build_image.sh` will create a container with the current date tagged, which allows easily reverting to an older container image, if the current image has a game-breaking bug. The other methods of building will only tag `latest`.
 This will build the server components and extractors. It also allows you to update the CMaNGOS core to the latest version.
 
 Next run `./update_dbs.sh` to download and install the SQLite Databases
@@ -45,7 +47,7 @@ To make your account into a GM account, use `account set gmlevel 3 username`.
 
 ### Updating
 
-To update the core simply run `./build_image.sh` again.
+To update the core simply run `./build_image.sh` or `podman compose build`/`docker compose build` again. Alternatively you can start the core with `podman compose up -d --build`/`docker compose up -d --build`
 To update the database simply run `./update_dbs.sh` again
 
 After updating the core, the composition needs to be fully torn down with `podman compose down` or `docker compose down` and not simply stopped for it to load the newly built core image.
