@@ -1,11 +1,15 @@
 services:
   realmd:
     image: cmangos-${CMANGOS_EXPANSION}:latest
+    pull_policy: never
     build:
-      context: "."
+      context: "docker"
       tags:
         - "cmangos-${CMANGOS_EXPANSION}:latest"
       dockerfile: Dockerfile
+      args:
+        - "BUILD_PLAYERBOTS=${BUILD_PLAYERBOTS}"
+        - "CMANGOS_EXPANSION=${CMANGOS_EXPANSION}"
     env_file: .env
     ports:
       - 3724:3724
@@ -16,11 +20,7 @@ services:
       - "/mangos/bin/realmd"
   mangosd:
     image: cmangos-${CMANGOS_EXPANSION}:latest
-    build:
-      context: "."
-      tags:
-        - "cmangos-${CMANGOS_EXPANSION}:latest"
-      dockerfile: Dockerfile
+    pull_policy: never
     env_file: .env
     ports:
       - 8085:8085
