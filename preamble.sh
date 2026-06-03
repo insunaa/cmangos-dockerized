@@ -31,6 +31,7 @@ if [ ! -s .env ]; then
         echo "No .env or .env.dist file found. Please ensure you run this script from the correct directory!"
         exit 1
     else
+        echo "No .env file found. Creating it from '.env.dist' template. Please edit the '.env' file to your desired values."
         cp .env.dist .env
     fi
 fi
