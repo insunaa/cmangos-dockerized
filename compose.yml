@@ -8,7 +8,8 @@ services:
         - "cmangos-${CMANGOS_EXPANSION}:latest"
       dockerfile: Dockerfile
       args:
-        - "BUILD_PLAYERBOTS=${BUILD_PLAYERBOTS}"
+        - "PLAYERBOTS=${BUILD_PLAYERBOTS}"
+        - "AHBOT=${BUILD_PLAYERBOTS}"
         - "CMANGOS_EXPANSION=${CMANGOS_EXPANSION}"
     env_file: .env
     ports:
